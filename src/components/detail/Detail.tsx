@@ -1,33 +1,27 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import Actions from '../../redux/Actions'; 
+import { useSelector } from 'react-redux';
+ 
 type TParams = { pais: string };
 const Detail = ({match}: RouteComponentProps<TParams>) =>{
 
-    const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(Actions.Country_search(match.params.pais));
-    
-    }, [dispatch, match.params.pais]);
-
-    const Country = useSelector<any, any>((state:any) => {
+    const data = useSelector<any, any>((state:any) => {
         return {
-            pais: state.Country_list.country,
-            loading: state.Country_list.loading
+            pais: state.Country_list.countryGet
         }
     });
 
+   const info = data.pais;
    
    
     return(
         <Fragment>
         <h2>hola</h2>
         <ul>
-        {Country.loading === false ? <Fragment>cARFGANDO</Fragment>: Country.pais.map((index:any) =>(
-         <li key={index.name}>{index.name}</li>      
-        ))}
+        
+
+    <li>{info.nombre}</li>
         </ul>
         </Fragment>
     )

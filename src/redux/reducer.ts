@@ -4,7 +4,8 @@ import {COUNTRIES_LOADED_COMPLETE, COUNTRIES_FAILS_TOLOAD, COUNTRIES_REQUEST,
 const CountryState = {
   countries: [],
   loading: false,
-  error: ''
+  error: '',
+  countryGet: []
 }
 
 export const CountriesReducer = (state = CountryState, action:CountryAction) => {
@@ -36,7 +37,7 @@ export const CountriesReducer = (state = CountryState, action:CountryAction) => 
           case COUNTRY_DETAIL_SUCCESS:
             return{
               ...state,
-              country:action.payload,
+              countryGet:action.payload,
               loading: true,
               error: ''
             }

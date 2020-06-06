@@ -1,6 +1,6 @@
 import CountriesService from '../services/countries/CountriesService';
 import {COUNTRIES_REQUEST, COUNTRIES_LOADED_COMPLETE , COUNTRIES_FAILS_TOLOAD, COUNTRY_DETAIL_SUCCESS, COUNTRY_LAND_SUCCESS} from './types';
-import Countries from '../components/Countries/Countries';
+
 
 export const Countries_request = () =>{
 
@@ -26,7 +26,7 @@ export const CountriesLoadFails = (error:string) =>{
     }
 }
 
-export const CountrySearchDetail = (countryes = Countries) =>{
+export const CountrySearchDetail = (countryes=[]) =>{
     return{
         type:COUNTRY_DETAIL_SUCCESS,
         payload:countryes,
@@ -87,16 +87,11 @@ const Country_filter = (dato="") =>{
 
 
 
-const Country_search= (dato:string) =>{
-    return async (dispatch:any)=>{
-        dispatch(Countries_request());
-        CountriesService.getCountry_detail(dato)
-        .then(respuesta =>{
-            dispatch(CountrySearchDetail(respuesta.data))
-        }).catch(error =>{
-            dispatch(CountriesLoadFails('ocurrio un error al buscar '+error))
-        })
-    }
+const Country_search= (dato:any) =>{
+
+        return (dispatch:any)=>{
+        dispatch(CountrySearchDetail(dato));
+        }
 }
 
 export default {Countries_Actions, Country_search, Country_filter };
