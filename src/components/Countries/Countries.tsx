@@ -49,7 +49,7 @@ return (
             </div>
           </div>
         {Countries.loading === false  ? <Movies.Loading />: Countries.paises.map((index:any) =>(
-                <ListCountries key={index.alpha3Code} codigo={index.alpha3Code} flag={index.flag} pais={index.name} name={index.name} capital={index.capital} />
+                <ListCountries key={index.alpha3Code} codigo={index.alpha3Code} flag={index.flag}  name={index.name} capital={index.capital} />
         ))}
       </div> 
     </Fragment>
