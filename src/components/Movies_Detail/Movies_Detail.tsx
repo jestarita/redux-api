@@ -1,17 +1,19 @@
-import React, { useEffect } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
-
-type TParams = { peli: any };
-const Movies_Detail = ({match}: RouteComponentProps<TParams>) =>{
-
-    useEffect(() => {
-        
-        return () => {
-            
-        }
-    })
-    console.log(match);
-return(<h2>hola</h2>)
+import React, { Fragment } from 'react';
+import { useLocation } from 'react-router-dom';
+const Movies_Detail = () =>{
+    const location = useLocation();
+    const myparam:any = location.state;
+    
+return(
+   
+    <Fragment>
+        <div>
+        <h2>{myparam.nombre}</h2>
+        <img src={myparam.imagen} alt={myparam.nombre} />
+<p>{myparam.detail}</p>
+        </div>
+    </Fragment>
+)
 }
 
 export default Movies_Detail;

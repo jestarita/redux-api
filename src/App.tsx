@@ -37,7 +37,7 @@ function App() {
         <Route path="/detalle/:pais" component={Detail}>
         </Route>
 
-        <Route path="/movie-detail/:peli" component={Movies_Detail}>
+        <Route path="/movie-detail/:movie" component={Movies_Detail}>
         </Route>
         <Route path="/">
           <Home />

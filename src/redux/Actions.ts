@@ -47,24 +47,21 @@ export const CountryFilterComplete = (Countryes:any) =>{
 const Countries_Actions = (dato="") =>{
     return async (dispatch:any) =>{
         dispatch(Countries_request());
-        if(dato !== ""){
-            CountriesService.getCountries_Contient(dato)
-            .then(response =>{      
-                dato = response.data;  
-                dispatch(CountriesLoadedComplete(response.data))
-            }).catch(error =>{
-                dispatch(CountriesLoadFails(error))
-            });
-        }else{
             CountriesService.getCountries()
             .then(response =>{
-                dispatch(CountriesLoadedComplete(response.data))
+                if(dato !== ""){
+                    const resutados = response.data;
+                    const filter_countries = resutados.filter((country:any) => { 
+                            return country.region.toLowerCase().includes((dato.toLowerCase())); 
+                    });
+                    dispatch(CountriesLoadedComplete(filter_countries));
+                }else{
+                    dispatch(CountriesLoadedComplete(response.data));
+                }
+               
             }).catch(error =>{
                 dispatch(CountriesLoadFails(error))
             });
-        }
-        
-     
     }
 }
 

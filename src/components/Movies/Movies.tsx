@@ -2,11 +2,16 @@ import React, {useState, useEffect, Fragment } from 'react'
 import './Movies.scss';
 
 import MoviesServices from '../../services/movies/MoviesServices';
-
-
+import { useHistory } from 'react-router-dom';
 
 const Listado = (props:any)=>{
+    let history = useHistory();
+  
 
+    function handleClick() {
+   
+      history.push('/movie-detail/'+props.title,{nombre: props.title, detail: props.description, imagen: props.imagen});
+    }
     return(
             <div className="col-sm-4 col-md-4 col-xl-4" key={props.title}>
                 <div className="card mt-3 mx-2 tarjeta-pelicula">
@@ -16,7 +21,7 @@ const Listado = (props:any)=>{
                     <p className="text-justify descripcion-pelicula">
                         {props.description}
                     </p>
-                    <a type="submit" className="btn btn-info float-right" href={"/movie-detail/"+(props.pelicula.nombre)}>Ver mas</a>
+                    <button className="btn btn-info float-right" type="submit" onClick={evt => handleClick()}>Imagen</button>
                 </div>
                 </div>
             </div>
