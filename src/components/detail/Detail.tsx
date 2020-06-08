@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Action  from '../../redux/Actions'
 import './Detail.scss';
@@ -27,7 +27,10 @@ const Detail = () =>{
                 <Fragment key={dato.name}>
                  
                 <div className="col-sm-12 col-md-5 col-xl-5">
-                <a className="btn btn-dark btn-sm ml-2 float-left" href="/countries">Atras</a>
+                
+                <NavLink exact to="/countries" className="btn btn-dark btn-sm ml-2 float-left">
+                    Atras
+                    </NavLink>
                     <img className="bandera mt-2 ml-1" src={dato.flag} alt={dato.name}  />
                 </div>
                 <div className="col-sm-12 col-md-6 col-xl-6 mt-4">

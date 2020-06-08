@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, NavLink } from 'react-router-dom';
 const Movies_Detail = () =>{
     const location = useLocation();
     const myparam:any = location.state;
@@ -11,7 +11,9 @@ return(
         <div className="row mt-2 mb-2">
         
             <div className="col-sm-12 col-md-4 col-xl-4">
-            <a className="btn btn-dark btn-sm ml-2 float-left" href="/movies">Atras</a>
+            <NavLink exact to="/movies" className="btn btn-dark btn-sm ml-2 float-left">
+            Atras
+            </NavLink>
             <img className="mt-2" src={myparam.movie.image} alt={myparam.nombre} />
             </div>
             <div className="col-sm-12 col-md-6 col-xl-6">
