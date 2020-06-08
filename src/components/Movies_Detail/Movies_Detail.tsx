@@ -7,8 +7,8 @@ const Movies_Detail = () =>{
 return(
    
     <Fragment>
- 
-        <div className="row mt-2 mb-2">
+  <div className="container-fluid"> 
+         <div className="row mt-2 mb-2">
         
             <div className="col-sm-12 col-md-4 col-xl-4">
             <NavLink exact to="/movies" className="btn btn-dark btn-sm ml-2 float-left">
@@ -27,6 +27,8 @@ return(
             </div>
             </div>
         </div>
+        </div>
+
     </Fragment>
 )
 }
