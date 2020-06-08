@@ -3,14 +3,27 @@ import { useLocation } from 'react-router-dom';
 const Movies_Detail = () =>{
     const location = useLocation();
     const myparam:any = location.state;
-    
+  
 return(
    
     <Fragment>
-        <div>
-        <h2>{myparam.nombre}</h2>
-        <img src={myparam.imagen} alt={myparam.nombre} />
-<p>{myparam.detail}</p>
+ 
+        <div className="row mt-2 mb-2">
+        
+            <div className="col-sm-12 col-md-4 col-xl-4">
+            <a className="btn btn-dark btn-sm ml-2 float-left" href="/movies">Atras</a>
+            <img className="mt-2" src={myparam.movie.image} alt={myparam.nombre} />
+            </div>
+            <div className="col-sm-12 col-md-6 col-xl-6">
+                <div className="mt-3">
+            <h2>{myparam.movie.nombre}</h2>            
+            <p className="text-justify descripcion-pelicula"><b>A&ntilde;o:</b>  {myparam.movie.año}</p>
+            <p className=" text-justify descripcion-pelicula"><b>Estrellas:</b> {myparam.movie.estrellas}</p>
+            <p className=" text-justify descripcion-pelicula"><b>Director:</b> {myparam.movie.director}</p>
+            <p className=" text-justify descripcion-pelicula"><b>Elenco:</b> {myparam.movie.elenco}</p>
+            <p className="text-justify descripcion-pelicula"> <b>Descripci&oacute;n:</b> {myparam.movie.descripccion}</p>
+            </div>
+            </div>
         </div>
     </Fragment>
 )

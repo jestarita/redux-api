@@ -10,18 +10,15 @@ const Listado = (props:any)=>{
 
     function handleClick() {
    
-      history.push('/movie-detail/'+props.title,{nombre: props.title, detail: props.description, imagen: props.imagen});
+      history.push('/movie-detail/'+props.pelicula.nombre,{ movie: props.pelicula});
     }
     return(
-            <div className="col-sm-4 col-md-4 col-xl-4" key={props.title}>
+            <div className="col-sm-4 col-md-4 col-xl-4" key={props.pelicula.nombre}>
                 <div className="card mt-3 mx-2 tarjeta-pelicula">
-                <img className="card-img-top imagen-pelicula" src={props.imagen} alt={props.title}  />
+                <img className="card-img-top imagen-pelicula" src={props.pelicula.image} alt={props.pelicula.nombre}  />
                 <div className="card-body cuerpo-pelicula">
-                    <h2 className="text-center titulo-pelicula">{props.title}</h2>                
-                    <p className="text-justify descripcion-pelicula">
-                        {props.description}
-                    </p>
-                    <button className="btn btn-info float-right" type="submit" onClick={evt => handleClick()}>Imagen</button>
+                    <h2 className="text-center titulo-pelicula">{props.pelicula.nombre}</h2>                
+                    <button className="btn btn-info float-right" type="submit" onClick={evt => handleClick()}>Ver mas</button>
                 </div>
                 </div>
             </div>
@@ -49,9 +46,6 @@ const Loading = () =>{
 const Movies = (props:any) =>{
     const [data, setData] = useState({ results: [] as any });
     const [cargado, setCargado] = useState(false);
-
-
-
     
     useEffect(() => {
       ObtenerPeliculas();
@@ -92,8 +86,7 @@ return (
                 {
                 !cargado || !filter_movies ?(<Loading />):(<Fragment>
                     {filter_movies.sort((a:any, b:any) => a.nombre > b.nombre ? 1 : -1).map((movie:any) => (
-                        <Listado imagen={movie.image} title={movie.nombre}
-                        description={movie.descripccion} key={movie.nombre} pelicula={movie} />                    
+                        <Listado key={movie.nombre}  pelicula={movie} />                    
              
                     ))} 
                 </Fragment>

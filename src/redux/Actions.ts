@@ -68,6 +68,7 @@ const Countries_Actions = (dato="") =>{
 const Country_filter = (dato="") =>{
     return async (dispatch:any) =>{
         dispatch(Countries_request());
+  
         CountriesService.getCountries().then(respuesta =>{
             const resutados = respuesta.data;
             const filter_movies = resutados.filter((country:any) => { 
@@ -85,9 +86,17 @@ const Country_filter = (dato="") =>{
 
 
 const Country_search= (dato:any) =>{
-
+//dispatch(CountrySearchDetail(dato));
         return (dispatch:any)=>{
-        dispatch(CountrySearchDetail(dato));
+        
+        dispatch(Countries_request());
+        CountriesService.getCountry_detail(dato).then(respuesta =>{
+            const resutados = respuesta.data;
+            dispatch(CountrySearchDetail(resutados));
+        }).catch(error =>{
+            dispatch(CountriesLoadFails(error))
+        });
+
         }
 }
 

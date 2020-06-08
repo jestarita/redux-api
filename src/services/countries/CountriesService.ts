@@ -8,8 +8,8 @@ const getCountries_Contient = (continent:string) => {
   return http.get("/region/"+continent);
 };
 
-const getCountry_detail = (country:string) => {
-  return http.get("/name/"+country);
+const getCountry_detail = (capital:string) => {
+  return http.get("/capital/"+capital);
 };
 
 export default {getCountries, getCountries_Contient, getCountry_detail}

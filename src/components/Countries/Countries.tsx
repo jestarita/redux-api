@@ -48,8 +48,8 @@ return (
             </div>
             </div>
           </div>
-        {Countries.loading === false  ? <Movies.Loading />: Countries.paises.map((index:any) =>(
-                <ListCountries key={index.alpha3Code} codigo={index.alpha3Code} flag={index.flag}  name={index.name} capital={index.capital} />
+        {Countries.loading === false  ? <Movies.Loading />: Countries.paises.map((land:any) =>(
+                <ListCountries key={land.alpha3Code}  dato={land} />
         ))}
       </div> 
     </Fragment>
