@@ -1,3 +1,5 @@
+puedes ver el proyecto en el siguiente enlace https://api-redux.netlify.app/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
